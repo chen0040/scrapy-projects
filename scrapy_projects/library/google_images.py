@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 import urllib.request
 import os
 
-class GoogleImageDownloader(object):
+
+class GoogleImageSearchThumbnailDownloader(object):
     def __init__(self, base_url=None):
         self.page_size = 10
         if base_url is None:
@@ -36,7 +37,7 @@ class GoogleImageDownloader(object):
 
 
 def main():
-    downloader = GoogleImageDownloader()
+    downloader = GoogleImageSearchThumbnailDownloader()
     downloader.download(keyword='pandas', output_dir='../demo/temp/pandas')
 
 
