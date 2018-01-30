@@ -2,7 +2,9 @@ from scrapy_projects.library.google_images import GoogleImageSearchThumbnailDown
 
 def main():
     downloader = GoogleImageSearchThumbnailDownloader()
-    downloader.download(keyword='cute pandas', output_dir='../demo/temp/cute_pandas')
+    categories = ['chair', 'bed', 'table', 'cabinet', 'sofa', 'lighting', 'wardrobe']
+    for category in categories:
+        downloader.download(keyword=category, output_dir='../demo/temp/' + category)
 
 
 if __name__ == '__main__':
