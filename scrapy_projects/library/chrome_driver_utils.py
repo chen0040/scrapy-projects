@@ -23,3 +23,13 @@ def make_headless_chrome_driver(chrome_driver_dir_path):
     driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver_file_path)
 
     return driver
+
+
+def make_chrome_driver(chrome_driver_dir_path):
+    chrome_options = Options()
+    # chrome_options.add_argument("--headless")
+
+    chrome_driver_file_path = get_chrome_driver_file_path(chrome_driver_dir_path)
+    driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver_file_path)
+
+    return driver
