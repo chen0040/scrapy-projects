@@ -4,6 +4,13 @@ Projects using requests, BeautifulSoup, selenium, scrapy for web scraping
 
 # Usage
 
+The library of the various scrappers are contained in the [library](scrapy_projects/library) folder
+
+The demo codes on how to crawling various web data sources can be found in the [demo](scrapy_projects/demo) folder
+
+To run the demo codes in PyCharm, say [demo/google_trend_download.py], right-click the python file in PyCharm and click
+"Run google_trend_download" option in the pop-up menu.
+
 ### Download Thumbnails from Google Image Search
 
 The following codes show how to download images related to "pandas" from google image search:
