@@ -26,6 +26,7 @@ class GoogleTrendDownloader(object):
         browser = make_chrome_driver(self.chrome_driver_dir_path, download_folder=saved_folder_path)
         url = self.base_url + '/explore?q=' + keywords + '&date=' + date
         print('getting url: ', url)
+
         browser.get(url)
 
         time.sleep(3)
