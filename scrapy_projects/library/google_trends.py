@@ -1,24 +1,23 @@
-from selenium import webdriver
+from scrapy_projects.library.chrome_driver_utils import make_headless_chrome_driver
 
 
 class GoogleTrendDownloader(object):
-    def __init__(self, base_url=None):
+    def __init__(self, base_url=None, chrome_driver_dir_path=None):
+        if chrome_driver_dir_path is None:
+            chrome_driver_dir_path = '../chromedriver'
         if base_url is None:
             base_url = 'https://trends.google.com/trends/'
         self.base_url = base_url
+        self.chrome_driver_dir_path = chrome_driver_dir_path
 
-    def download(self, keywords, user_agent=None, date=None):
-        if user_agent is None:
-            user_agent = 'Mozilla/5.0'
+    def download(self, keywords, date=None):
         if date is None:
             date = 'now%201-d'
 
-        options = webdriver.ChromeOptions()
-        options.add_argument('--user-agent=' + user_agent + ' ')
-        browser = webdriver.Chrome(chrome_options=options)
-
+        browser = make_headless_chrome_driver(self.chrome_driver_dir_path)
         url = self.base_url + '/explore#q=' + keywords + '&date=' + date
         browser.get(url)
+
 
 
 def main():
