@@ -23,5 +23,5 @@ The following codes uses selenium to download pokemon images and description:
 from scrapy_projects.library.pokemon import Pokemon
 
 if __name__ == '__main__':
-    Pokemon().download(output_dir='./temp/pokemon')
+    Pokemon(chrome_driver_dir_path='../chromedriver').download(output_dir='./temp/pokemon')
 ```
