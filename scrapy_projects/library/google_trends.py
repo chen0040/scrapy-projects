@@ -1,5 +1,6 @@
 from scrapy_projects.library.chrome_driver_utils import make_chrome_driver
 import time
+import os
 
 class GoogleTrendDownloader(object):
     def __init__(self, base_url=None, chrome_driver_dir_path=None):
@@ -10,11 +11,19 @@ class GoogleTrendDownloader(object):
         self.base_url = base_url
         self.chrome_driver_dir_path = chrome_driver_dir_path
 
-    def download(self, keywords, date=None):
+    def download(self, keywords, output_dir, date=None):
         if date is None:
             date = 'now%201-d'
 
-        browser = make_chrome_driver(self.chrome_driver_dir_path)
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        saved_folder_path = output_dir + '/' + keywords
+
+        if not os.path.exists(saved_folder_path):
+            os.makedirs(saved_folder_path)
+
+        browser = make_chrome_driver(self.chrome_driver_dir_path, download_folder=saved_folder_path)
         url = self.base_url + '/explore?q=' + keywords + '&date=' + date
         print('getting url: ', url)
         browser.get(url)
@@ -36,7 +45,7 @@ class GoogleTrendDownloader(object):
 
 def main():
     downloader = GoogleTrendDownloader()
-    downloader.download('google')
+    downloader.download('google', output_dir='../demo/temp/google_trends')
 
 
 if __name__ == '__main__':
