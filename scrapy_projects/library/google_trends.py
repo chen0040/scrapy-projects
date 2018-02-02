@@ -18,6 +18,8 @@ class GoogleTrendDownloader(object):
         url = self.base_url + '/explore#q=' + keywords + '&date=' + date
         browser.get(url)
 
+        browser.close()
+
 
 
 def main():
