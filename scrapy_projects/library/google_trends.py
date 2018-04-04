@@ -2,6 +2,7 @@ from scrapy_projects.library.chrome_driver_utils import make_chrome_driver
 import time
 import os
 
+
 class GoogleTrendDownloader(object):
     def __init__(self, base_url=None, chrome_driver_dir_path=None):
         if chrome_driver_dir_path is None:
@@ -41,7 +42,6 @@ class GoogleTrendDownloader(object):
                 button.click()
 
         browser.close()
-
 
 
 def main():

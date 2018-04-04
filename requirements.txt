@@ -2,3 +2,4 @@ requests
 bs4
 selenium
 numpy
+requests_html
